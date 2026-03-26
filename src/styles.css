@@ -1,15 +1,166 @@
-:root{--bg:#f7f9fc;--card:#fff;--accent:#1f6feb}
-body{font-family:Inter,system-ui,Arial, sans-serif;background:var(--bg);margin:0;padding:20px;color:#0b1b2b}
-.container{max-width:960px;margin:0 auto;background:var(--card);padding:18px;border-radius:8px;box-shadow:0 6px 18px rgba(15,22,36,0.06)}
-.theme-dark{background:#0b1220;color:#e6eef8}
-.theme-dark input[type="number"], .theme-dark input[type="text"]{background:#071021;border-color:#13314a;color:#e6eef8}
-.theme-dark table, .theme-dark th, .theme-dark td{border-color:#132033}
-header h1{margin:0 0 12px}
-.controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
-.controls button, .controls .import{background:var(--accent);color:#fff;border:0;padding:8px 12px;border-radius:6px;cursor:pointer}
-.controls .import input{display:none}
-table{width:100%;border-collapse:collapse}
-th,td{padding:6px 8px;border-bottom:1px solid #eef3fb;text-align:left}
-input[type="number"], input[type="text"]{width:100%;padding:6px;border:1px solid #d6e4fb;border-radius:4px}
-.small{background:transparent;border:0;color:#c33;cursor:pointer;margin-left:6px}
-footer{margin-top:12px;color:#6b7788}
+/* === Variables === */
+:root {
+  --bg: #f7f9fc;
+  --card: #fff;
+  --accent: #1f6feb;
+  --border: #eef3fb;
+  --text: #0b1b2b;
+  --muted: #6b7788;
+}
+
+/* === Reset & Base === */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body {
+  font-family: Inter, system-ui, -apple-system, Arial, sans-serif;
+  background: var(--bg);
+  margin: 0;
+  padding: 8px;
+  color: var(--text);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* === Container === */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  background: var(--card);
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(15,22,36,0.06);
+}
+
+/* === Dark theme === */
+.theme-dark { background: #0b1220; color: #e6eef8; }
+.theme-dark input[type="number"],
+.theme-dark input[type="text"],
+.theme-dark select { background: #071021; border-color: #13314a; color: #e6eef8; }
+.theme-dark table, .theme-dark th, .theme-dark td { border-color: #132033; }
+.theme-dark .controls button,
+.theme-dark .controls .import { background: #1a5bc4; }
+
+/* === Header === */
+.app-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.app-header h1 { margin: 0; font-size: 1.4rem; }
+
+/* === Settings row === */
+.settings-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.settings-row label { font-size: 0.85rem; }
+.settings-row select {
+  padding: 4px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+
+/* === Controls === */
+.controls {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.controls button,
+.controls .import {
+  background: var(--accent);
+  color: #fff;
+  border: 0;
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  min-height: 44px;          /* touch-friendly */
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.controls button:active,
+.controls .import:active {
+  opacity: 0.8;
+}
+.controls .import input { display: none; }
+
+/* === Table wrapper (horizontal scroll on mobile) === */
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 8px;
+}
+
+/* === Table === */
+table { width: 100%; border-collapse: collapse; min-width: 360px; }
+th, td {
+  padding: 8px 6px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  white-space: nowrap;
+}
+
+/* === Inputs === */
+input[type="number"],
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #d6e4fb;
+  border-radius: 4px;
+  font-size: 1rem;
+  min-height: 40px;
+}
+/* Prevent zoom on iOS when focusing inputs */
+@supports (-webkit-touch-callout: none) {
+  input[type="number"],
+  input[type="text"],
+  select { font-size: 16px; }
+}
+
+/* Name input narrower */
+td:first-child input { min-width: 80px; max-width: 120px; }
+/* Score inputs compact */
+td:not(:first-child):not(:last-child) input { min-width: 50px; max-width: 70px; }
+
+.small {
+  background: transparent;
+  border: 0;
+  color: #c33;
+  cursor: pointer;
+  margin-left: 4px;
+  min-width: 28px;
+  min-height: 28px;
+  font-size: 1rem;
+}
+
+/* === Footer === */
+footer { margin-top: 12px; color: var(--muted); font-size: 0.8rem; }
+
+/* === Responsive === */
+@media (min-width: 600px) {
+  body { padding: 20px; }
+  .container { padding: 18px; }
+  .app-header h1 { font-size: 1.6rem; }
+}
+
+@media (max-width: 400px) {
+  .controls { gap: 4px; }
+  .controls button,
+  .controls .import { padding: 8px 10px; font-size: 0.8rem; }
+  .app-header h1 { font-size: 1.2rem; }
+}

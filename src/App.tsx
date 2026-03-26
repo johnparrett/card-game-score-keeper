@@ -75,7 +75,7 @@ export default function App() {
 
   return (
     <div className={"container " + (theme === 'dark' ? 'theme-dark' : '')}>
-      <header style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+      <header className="app-header">
         <h1>{t('title')}</h1>
         <Settings theme={theme} setTheme={setTheme} />
       </header>
@@ -91,7 +91,7 @@ export default function App() {
         <button onClick={resetAll}>{t('reset')}</button>
       </section>
 
-      <section>
+      <section className="table-wrap">
         <table>
           <thead>
             <tr>

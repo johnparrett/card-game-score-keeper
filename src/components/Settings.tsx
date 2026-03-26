@@ -5,7 +5,7 @@ export default function Settings({ theme, setTheme }: { theme: 'light' | 'dark',
   const { lang, setLang, t } = useI18n()
 
   return (
-    <div style={{display:'flex',gap:8,alignItems:'center'}}>
+    <div className="settings-row">
       <label>
         {t('language')}: 
         <select value={lang} onChange={e => setLang(e.target.value as any)}>
