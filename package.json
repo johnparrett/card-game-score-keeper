@@ -2,6 +2,11 @@
   "name": "score-keeper-web",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://johnparrett.github.io/card-game-score-keeper",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/johnparrett/card-game-score-keeper.git"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
