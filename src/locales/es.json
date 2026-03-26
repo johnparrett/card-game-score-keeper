@@ -1,0 +1,17 @@
+{
+  "title": "Marcador",
+  "add_player": "Agregar jugador",
+  "add_round": "Agregar ronda",
+  "export": "Exportar",
+  "import": "Importar",
+  "reset": "Reiniciar",
+  "player": "Jugador",
+  "total": "Total",
+  "reset_confirm": "¿Reiniciar todos los datos?",
+  "settings": "Ajustes",
+  "language": "Idioma",
+  "theme": "Tema",
+  "light": "Claro",
+  "dark": "Oscuro",
+  "data_notice": "Los datos se almacenan en localStorage. Exporta antes de borrar datos del navegador."
+}

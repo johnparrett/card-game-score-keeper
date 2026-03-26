@@ -1,0 +1,17 @@
+{
+  "title": "Score Keeper",
+  "add_player": "Add player",
+  "add_round": "Add round",
+  "export": "Export",
+  "import": "Import",
+  "reset": "Reset",
+  "player": "Player",
+  "total": "Total",
+  "reset_confirm": "Reset all data?",
+  "settings": "Settings",
+  "language": "Language",
+  "theme": "Theme",
+  "light": "Light",
+  "dark": "Dark",
+  "data_notice": "Data stored in localStorage. Export before clearing browser data."
+}
