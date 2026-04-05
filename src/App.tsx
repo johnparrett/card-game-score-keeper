@@ -34,6 +34,8 @@ export default function App() {
 
   const removeRoundAt = (index: number) => setPlayers(p => removeRound(p, index))
 
+  const removePlayer = (playerId: string) => setPlayers(p => p.filter(pl => pl.id !== playerId))
+
   const setScore = (playerId: string, roundIndex: number, value: number) => {
     setPlayers(p => p.map(pl => pl.id === playerId ? { ...pl, scores: pl.scores.map((s, i) => i === roundIndex ? value : s) } : pl))
   }
@@ -67,8 +69,10 @@ export default function App() {
 
   const resetAll = () => {
     if (!confirm('Reset all data?')) return
-    const base = players.map(p => ({ ...p, scores: Array(1).fill(0) }))
-    setPlayers(base)
+    setPlayers([
+      { id: uid(), name: 'Alice', scores: [0] },
+      { id: uid(), name: 'Bob', scores: [0] }
+    ])
   }
 
   const [theme, setTheme] = useState<'light'|'dark'>('light')
@@ -106,11 +110,12 @@ export default function App() {
             {players.map((pl, pi) => (
               <tr key={pl.id}>
                 <td>
-                  <input value={pl.name} onChange={e => setPlayers(ps => ps.map(pp => pp.id === pl.id ? { ...pp, name: e.target.value } : pp))} />
+                  <input value={pl.name} onChange={e => setPlayers(ps => ps.map(pp => pp.id === pl.id ? { ...pp, name: e.target.value } : pp))} onFocus={e => e.currentTarget.select()} />
+                  <button className="small" onClick={() => removePlayer(pl.id)} aria-label="Remove player">✕</button>
                 </td>
                 {pl.scores.map((s, ri) => (
                   <td key={ri}>
-                    <input type="number" value={String(s)} onChange={e => setScore(pl.id, ri, Number(e.target.value || 0))} />
+                    <input type="number" value={String(s)} onChange={e => setScore(pl.id, ri, Number(e.target.value || 0))} onFocus={e => e.currentTarget.select()} />
                   </td>
                 ))}
                 <td><strong>{totalsArr[pi]}</strong></td>
